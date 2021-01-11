@@ -34,7 +34,7 @@ public class CustomerController {
 
     //edit customer
     @RequestMapping(value = "/{customerId}", method = RequestMethod.POST)
-    public Customer editCustomer(@RequestBody Customer customer, @PathVariable int customerId){
+    public Customer editCustomer(@RequestBody Customer customer, @PathVariable Long customerId){
         return customerRepository.save(customer);
     }
 
