@@ -2,7 +2,9 @@ package org.mmmorritti.borrowing.controllers;
 
 import org.mmmorritti.borrowing.models.Borrowing;
 import org.mmmorritti.borrowing.repos.BorrowingRepository;
+import org.mmmorritti.borrowing.services.NotificationClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -10,6 +12,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping(value = "/v2/borrowings")
 public class BorrowingController {
+
+    @Autowired
+    NotificationClient notificationClient;
+
+    @Value("${kafka.sms.message}")
+    private String message;
 
     @Autowired
     private BorrowingRepository borrowingRepository;

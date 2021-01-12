@@ -12,6 +12,15 @@ public class Borrowing {
     private String endBorrow;
     private Long bookId;
     private Long customerId;
+    private String notification;
+
+    public String getNotification() {
+        return notification;
+    }
+
+    public void setNotification(String notification) {
+        this.notification = notification;
+    }
 
     public Long getBorrowingId() {
         return borrowingId;
