@@ -5,6 +5,7 @@ import org.mmmorritti.customer.repos.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.Optional;
 
 @RestController
@@ -23,6 +24,12 @@ public class CustomerController {
         }else{
             return null;
         }
+    }
+
+    //get all
+    @RequestMapping(method = RequestMethod.GET)
+    public Collection<Customer> getAllCustomer() {
+        return customerRepository.findAll();
     }
 
     //set customer

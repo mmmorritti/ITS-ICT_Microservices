@@ -5,6 +5,7 @@ import org.mmmorritti.book.repos.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.Optional;
 
 @RestController
@@ -20,6 +21,13 @@ public class BookController {
         bookRepository.save(book);//salva utente in db
         System.out.println(book);
     }
+
+    //get all
+    @RequestMapping(method = RequestMethod.GET)
+    public Collection<Book> getAllBooks() {
+        return bookRepository.findAll();
+    }
+
 
     //get book
     @RequestMapping(value = "/{bookId}", method = RequestMethod.GET)
