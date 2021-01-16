@@ -1,55 +1,55 @@
 package org.mmmorritti.book;
 
+
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.mmmorritti.book.controllers.BookController;
 import org.mmmorritti.book.models.Book;
 import org.mmmorritti.book.repos.BookRepository;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@SpringBootTest
 @RunWith(SpringRunner.class)
-@WebMvcTest(BookController.class)
 @AutoConfigureMockMvc
-public class BookControllerUnitTest {
+@TestPropertySource(locations="classpath:application-test.properties")
+public class BookIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
 
-    @MockBean
-    BookRepository bookRepository;
+    @Autowired
+    private ObjectMapper objectMapper;
 
-    //get all test
+    @Autowired
+    private BookRepository bookRepo;
+
     @Test
-    public void testGetAllBook(){
-        try{
+    public void testGetAllBook() throws Exception {
+        try {
             mockMvc.perform(MockMvcRequestBuilders
                     .get("/v2/books")
                     .accept(MediaType.APPLICATION_JSON))
                     .andExpect(status().isOk());
-        }catch (JsonProcessingException e){
-            e.printStackTrace();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
 
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    //get by id test giusto?
     @Test
-    public void testGetByID(){
+    public void testGetBookById(){
         try{
             Book book = new Book();
             book.setBookId(1L);
@@ -58,14 +58,12 @@ public class BookControllerUnitTest {
             book.setGenre("Racconto");
             book.setYear(1995);
             book.setPublishingHouse("Mondadori");
-            bookRepository.findById(1L);
+            bookRepo.findById(1L);
         }
         catch(Exception e){
             e.printStackTrace();
         }
-
     }
-
 
 
 

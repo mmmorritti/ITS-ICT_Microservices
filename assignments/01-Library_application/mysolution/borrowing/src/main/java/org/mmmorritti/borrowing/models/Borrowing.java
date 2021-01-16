@@ -67,7 +67,8 @@ public class Borrowing {
         String data = this.startBorrow + " "
                 + this.endBorrow + " "
                 + this.bookId + " "
-                + this.customerId;
+                + this.customerId + " "
+                + this.notification;
         return data;
     }
 }

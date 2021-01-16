@@ -23,6 +23,10 @@ public class BorrowingController {
     @Autowired
     private BorrowingRepository borrowingRepository;
 
+    public BorrowingController(BorrowingRepository borrowingRepository) {
+        this.borrowingRepository = borrowingRepository;
+    }
+
     //set borrowing
     @RequestMapping(method = RequestMethod.PUT)
     public void setBorrowing(@RequestBody Borrowing borrowing){

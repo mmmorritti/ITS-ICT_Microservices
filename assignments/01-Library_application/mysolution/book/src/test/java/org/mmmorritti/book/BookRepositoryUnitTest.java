@@ -27,7 +27,7 @@ public class BookRepositoryUnitTest {
     }
 
     @Test
-    public void testAddOneCustomer(){
+    public void testAddOneBook(){
         Book book = new Book();
         book.setBookId(1L);
         book.setAuthor("Franz Kafka");
@@ -40,6 +40,35 @@ public class BookRepositoryUnitTest {
     }
 
 
+    //delete all
+    @Test
+    public void testDeleteAllBook(){
+        Book book = new Book();
+        book.setBookId(1L);
+        book.setAuthor("Franz Kafka");
+        book.setTitle("La metamorfosi");
+        book.setGenre("Racconto");
+        book.setYear(1995);
+        book.setPublishingHouse("Mondadori");
+        bookRepository.save(book);
+        assertEquals(1,bookRepository.findAll().size()  );
+        bookRepository.deleteAll();
+    }
+
+    //delete one
+    @Test
+    public void testDeleteOneBook(){
+        Book book = new Book();
+        book.setBookId(1L);
+        book.setAuthor("Franz Kafka");
+        book.setTitle("La metamorfosi");
+        book.setGenre("Racconto");
+        book.setYear(1995);
+        book.setPublishingHouse("Mondadori");
+        bookRepository.save(book);
+        assertEquals(1,bookRepository.findAll().size()  );
+        bookRepository.deleteById(1L);
+    }
 
 
 }

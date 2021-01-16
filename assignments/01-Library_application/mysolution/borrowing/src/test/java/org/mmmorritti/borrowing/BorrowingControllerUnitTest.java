@@ -1,13 +1,12 @@
-package org.mmmorritti.book;
+package org.mmmorritti.borrowing;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.mmmorritti.book.controllers.BookController;
-import org.mmmorritti.book.models.Book;
-import org.mmmorritti.book.repos.BookRepository;
-import org.mockito.Mock;
+import org.mmmorritti.borrowing.controllers.BorrowingController;
+import org.mmmorritti.borrowing.models.Borrowing;
+import org.mmmorritti.borrowing.repos.BorrowingRepository;
+import org.mmmorritti.borrowing.services.NotificationClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -17,25 +16,29 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(BookController.class)
+@WebMvcTest(BorrowingController.class)
 @AutoConfigureMockMvc
-public class BookControllerUnitTest {
+public class BorrowingControllerUnitTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    BookRepository bookRepository;
+    NotificationClient notificationClient;
+
+    @MockBean
+    private BorrowingRepository borrowingRepository;
 
     //get all test
     @Test
-    public void testGetAllBook(){
+    public void testGetAllBorrow(){
         try{
             mockMvc.perform(MockMvcRequestBuilders
-                    .get("/v2/books")
+                    .get("/v2/borrowings")
                     .accept(MediaType.APPLICATION_JSON))
                     .andExpect(status().isOk());
         }catch (JsonProcessingException e){
@@ -47,26 +50,21 @@ public class BookControllerUnitTest {
 
     }
 
-    //get by id test giusto?
     @Test
     public void testGetByID(){
         try{
-            Book book = new Book();
-            book.setBookId(1L);
-            book.setAuthor("Franz Kafka");
-            book.setTitle("La metamorfosi");
-            book.setGenre("Racconto");
-            book.setYear(1995);
-            book.setPublishingHouse("Mondadori");
-            bookRepository.findById(1L);
+            Borrowing borrow = new Borrowing();
+            borrow.setBookId(1L);
+            borrow.setStartBorrow("202020");
+            borrow.setEndBorrow("202021");
+            borrow.setBookId(345L);
+            borrow.setCustomerId(5342L);
+            borrow.setNotification("");
+            borrowingRepository.findById(1L);
         }
-        catch(Exception e){
+        catch (Exception e){
             e.printStackTrace();
         }
 
     }
-
-
-
-
 }
