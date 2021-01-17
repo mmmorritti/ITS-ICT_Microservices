@@ -4,7 +4,7 @@
 
 - A working Minikube installation (the one shipped with Docker Desktop or the standalone version)
 - The installation of `kubectl` CLI, configured to access the local Minikube cluster (more at https://kubernetes.io/docs/tasks/tools/install-kubectl/ )
-- Having installed the Helm client (more at https://helm.sh/docs/intro/install/)
+- Having installed the Helm client (more at httpms://helm.sh/docs/intro/install/)
 
 To check `kubectl` configuration, type:
 
