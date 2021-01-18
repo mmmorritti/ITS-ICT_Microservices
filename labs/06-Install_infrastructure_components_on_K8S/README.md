@@ -134,7 +134,7 @@ NAME                     READY   STATUS    RESTARTS   AGE
 kibana-84579f77bc-n82d6   1/1     Running   0          6m43s
 ```
 
-
+## CONTINUARE DA QUI 
 ## Deploy MongoDB infrastructure
 
 Install MongoDB standalone instance for Customer microservice

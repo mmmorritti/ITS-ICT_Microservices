@@ -1,9 +1,12 @@
 package org.mmmorritti.borrowing.models;
 
+import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
 
+@Data
+@Document
 public class Borrowing {
 
     @Id
@@ -14,61 +17,5 @@ public class Borrowing {
     private Long customerId;
     private String notification;
 
-    public String getNotification() {
-        return notification;
-    }
 
-    public void setNotification(String notification) {
-        this.notification = notification;
-    }
-
-    public Long getBorrowingId() {
-        return borrowingId;
-    }
-
-    public void setBorrowingId(Long borrowingId) {
-        this.borrowingId = borrowingId;
-    }
-
-    public String getStartBorrow() {
-        return startBorrow;
-    }
-
-    public void setStartBorrow(String startBorrow) {
-        this.startBorrow = startBorrow;
-    }
-
-    public String getEndBorrow() {
-        return endBorrow;
-    }
-
-    public void setEndBorrow(String endBorrow) {
-        this.endBorrow = endBorrow;
-    }
-
-    public Long getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(Long bookId) {
-        this.bookId = bookId;
-    }
-
-    public Long getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
-    }
-
-    @Override
-    public String toString(){
-        String data = this.startBorrow + " "
-                + this.endBorrow + " "
-                + this.bookId + " "
-                + this.customerId + " "
-                + this.notification;
-        return data;
-    }
 }
