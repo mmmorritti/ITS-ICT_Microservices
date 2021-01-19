@@ -140,7 +140,7 @@ kibana-84579f77bc-n82d6   1/1     Running   0          6m43s
 Install MongoDB standalone instance for Customer microservice
 
 ```console
-$ helm install --values mongodb-values.yaml customer-mongodb bitnami/mongodb
+$ helm install --values mongodb-valuesCustomer.yaml customer-mongodb bitnami/mongodb
 NAME: customer-mongodb
 LAST DEPLOYED: Sun Jan  3 09:08:08 2021
 NAMESPACE: default
