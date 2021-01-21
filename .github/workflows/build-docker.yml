@@ -95,7 +95,7 @@ jobs:
         build_args: |
           TAG=${{ steps.get_commit_sha.outputs.COMMIT_SHA }}-${{ steps.get_branch.outputs.BRANCH }}
 
-  build-customer:
+  build-notification:
     runs-on: ubuntu-latest
     defaults:
       run:
