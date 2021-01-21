@@ -1,0 +1,7 @@
+**/target
+**/*.log
+**/.vagrant
+**/*.out
+**/.DS_Store
+**/.idea
+**/istio-*
