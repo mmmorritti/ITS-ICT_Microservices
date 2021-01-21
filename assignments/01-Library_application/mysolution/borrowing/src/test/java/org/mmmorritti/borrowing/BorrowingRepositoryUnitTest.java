@@ -28,7 +28,7 @@ public class BorrowingRepositoryUnitTest {
 
     @Test
     public void testEmptyDB(){
-        assertEquals(0,borrowingRepository.findAll().size());
+        assertEquals(0,borrowingRepository.findAll());
     }
 
     @Test
@@ -37,11 +37,11 @@ public class BorrowingRepositoryUnitTest {
         b.setBorrowingId(1L);
         b.setStartBorrow("202020");
         b.setEndBorrow("212121");
-        b.setNotification("notify");
+        b.setNotify("notify");
         b.setBookId(2L);
         b.setCustomerId(1L);
         borrowingRepository.save(b);
-        assertEquals(1,borrowingRepository.findAll().size());
+        assertEquals(1,borrowingRepository.findAll());
     }
 
 
@@ -51,11 +51,11 @@ public class BorrowingRepositoryUnitTest {
         b.setBorrowingId(1L);
         b.setStartBorrow("202020");
         b.setEndBorrow("212121");
-        b.setNotification("notify");
+        b.setNotify("notify");
         b.setBookId(2L);
         b.setCustomerId(1L);
         borrowingRepository.save(b);
-        assertEquals(1,borrowingRepository.findAll().size());
+        assertEquals(1,borrowingRepository.findAll());
         borrowingRepository.deleteAll();
     }
 
@@ -66,11 +66,11 @@ public class BorrowingRepositoryUnitTest {
         b.setBorrowingId(1L);
         b.setStartBorrow("202020");
         b.setEndBorrow("212121");
-        b.setNotification("notify");
+        b.setNotify("notify");
         b.setBookId(2L);
         b.setCustomerId(1L);
         borrowingRepository.save(b);
-        assertEquals(1,borrowingRepository.findAll().size());
+        assertEquals(1,borrowingRepository.findAll());
         borrowingRepository.deleteById(1L);
     }
 

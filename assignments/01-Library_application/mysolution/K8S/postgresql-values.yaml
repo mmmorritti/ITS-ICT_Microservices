@@ -1,0 +1,28 @@
+---
+fullnameOverride: borrowing-postgres
+global:
+  postgresql:
+    postgresqlUsername: postgres
+    postgresqlPassword: postgres
+initdbUser: postgres
+initdbPassword: postgres
+initdbScripts:
+  dbinit.sql: |
+    CREATE DATABASE "borrowing" OWNER postgres;
+    \connect borrowing
+    ALTER DATABASE "borrowing" SET TIMEZONE TO 'Europe/Rome';
+    SET TIMEZONE TO 'Europe/Rome';
+
+    CREATE TABLE "borrowings"
+    (
+        borrowing_id integer,
+        start_borrow character varying,
+        end_borrow character varying,
+        book integer,
+        customer integer,
+        customer_id character varying,
+        notify character varying
+    ) TABLESPACE pg_default;
+
+    ALTER TABLE "borrowings"
+        OWNER to postgres;

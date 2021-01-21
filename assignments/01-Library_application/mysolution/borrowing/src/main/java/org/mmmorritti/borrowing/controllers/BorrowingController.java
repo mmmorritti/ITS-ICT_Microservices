@@ -8,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-import java.util.Optional;
+import javax.validation.Valid;
+import java.util.*;
+
 
 @RestController
 @Slf4j
@@ -23,7 +24,7 @@ public class BorrowingController {
     private String message;
 
     @Autowired
-    private BorrowingRepository borrowingRepository;
+    private final BorrowingRepository borrowingRepository;
 
     public BorrowingController(BorrowingRepository borrowingRepository) {
         this.borrowingRepository = borrowingRepository;
@@ -31,10 +32,12 @@ public class BorrowingController {
 
     //set borrowing
     @RequestMapping(method = RequestMethod.PUT)
-    public void setBorrowing(@RequestBody Borrowing borrowing){
-        log.info("Save");
-        borrowingRepository.save(borrowing);
+    public Borrowing setBorrowing(@RequestBody Borrowing borrowing){
+        notificationClient.sendSMS(borrowing);
         System.out.println(borrowing);
+        log.info("set");
+        return borrowingRepository.save(borrowing);
+
     }
 
     //get borrowing
@@ -54,7 +57,10 @@ public class BorrowingController {
     @RequestMapping(method = RequestMethod.GET)
     public Collection<Borrowing> getAllBorrowing() {
         log.info("Get all");
-        return borrowingRepository.findAll();
+        List<Borrowing> result = new ArrayList<Borrowing>();
+        Iterable<Borrowing> iterable = borrowingRepository.findAll();
+        iterable.forEach(result::add);
+        return result;
     }
 
     //edit borrow

@@ -53,24 +53,26 @@ services:
   #
   borrowing-ms:
     build:
-      context: ./book
+      context: ./borrowing
     container_name: borrowing-ms
     ports:
       - "8124:8124"
     depends_on:
-      - mongodb_db
+      - postgres_db
 
-  mongodb_db:
-    image: mongo:latest
-    container_name: borrowing-mongodb
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
-      MONGO_INITDB_DATABASE: borrowing_db
+  postgres_db:
+    image: postgres:latest
+    container_name: borrowing-postgres
     ports:
-      - 27017:27017
+      - "5432:5432"
     volumes:
-      - mongodb_data:/data/db
+      - postgres_data:/var/lib/postgresql/data
+      - ./borrowing/dbinit.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
 
   #
   # Notification
@@ -215,5 +217,6 @@ services:
 
 volumes:
  mongodb_data: {}
+ postgres_data: {}
  elasticsearch: {}
  filebeat: {}

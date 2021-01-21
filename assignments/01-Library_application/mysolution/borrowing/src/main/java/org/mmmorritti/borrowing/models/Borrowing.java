@@ -1,12 +1,13 @@
 package org.mmmorritti.borrowing.models;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.persistence.*;
 
 
 @Data
-@Document
+@Entity
+@Table(name = "borrowings")
 public class Borrowing {
 
     @Id
@@ -15,7 +16,8 @@ public class Borrowing {
     private String endBorrow;
     private Long bookId;
     private Long customerId;
-    private String notification;
+    private String notify;
+
 
 
 }

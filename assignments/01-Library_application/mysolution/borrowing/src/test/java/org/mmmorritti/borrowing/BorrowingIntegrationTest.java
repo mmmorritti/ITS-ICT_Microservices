@@ -57,7 +57,7 @@ public class BorrowingIntegrationTest {
             borrow.setEndBorrow("202021");
             borrow.setBookId(345L);
             borrow.setCustomerId(5342L);
-            borrow.setNotification("");
+            borrow.setNotify("");
             borrowingRepository.findById(1L);
         }
         catch (Exception e){
