@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: customer-ms
-          image: michelemorritti/customer:1.0-SNAPSHOT
+          image: michelemorritti/customer
           ports:
           - containerPort: 8123
           volumeMounts:
