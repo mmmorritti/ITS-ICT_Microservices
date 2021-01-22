@@ -51,8 +51,8 @@ public class CustomerRepositoryUnitTest {
         c.setCity("Turin");
         c.setTelephoneNumber(1234567L);
         customerRepository.save(c);
-        assertEquals(1,customerRepository.findAll().size()  );
         customerRepository.deleteAll();
+        assertEquals(0,customerRepository.findAll().size()  );
     }
 
     //delete one
@@ -67,7 +67,18 @@ public class CustomerRepositoryUnitTest {
         c.setCity("Turin");
         c.setTelephoneNumber(1234567L);
         customerRepository.save(c);
-        assertEquals(1,customerRepository.findAll().size()  );
+
+        c.setCustomerId(2L);
+        c.setName("Name");
+        c.setSurname("Surname");
+        c.setStreet("Street");
+        c.setNumber(23);
+        c.setCity("Turin");
+        c.setTelephoneNumber(1234567L);
+        customerRepository.save(c);
+
         customerRepository.deleteById(1L);
+        assertEquals(1,customerRepository.findAll().size()  );
+        System.out.println(c);
     }
 }

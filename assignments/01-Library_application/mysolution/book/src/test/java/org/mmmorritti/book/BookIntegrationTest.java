@@ -65,6 +65,31 @@ public class BookIntegrationTest {
         }
     }
 
+    @Test
+    public void testDeleteBookById(){
+        try {
+            Book book = new Book();
+            book.setBookId(1L);
+            book.setAuthor("Franz Kafka");
+            book.setTitle("La metamorfosi");
+            book.setGenre("Racconto");
+            book.setYear(1995);
+            book.setPublishingHouse("Mondadori");
+
+            Book book1 = new Book();
+            book1.setBookId(1L);
+            book1.setAuthor("Franz Kafka");
+            book1.setTitle("La metamorfosi");
+            book1.setGenre("Racconto");
+            book1.setYear(1995);
+            book1.setPublishingHouse("Mondadori");
+
+            bookRepo.deleteById(1L);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
 
 }

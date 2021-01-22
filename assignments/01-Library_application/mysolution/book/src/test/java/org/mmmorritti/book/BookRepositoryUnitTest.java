@@ -51,8 +51,28 @@ public class BookRepositoryUnitTest {
         book.setYear(1995);
         book.setPublishingHouse("Mondadori");
         bookRepository.save(book);
-        assertEquals(1,bookRepository.findAll().size()  );
+
+        Book book1 = new Book();
+        book1.setBookId(2L);
+        book1.setAuthor("Franz Kafka");
+        book1.setTitle("La metamorfosi");
+        book1.setGenre("Racconto");
+        book1.setYear(1995);
+        book1.setPublishingHouse("Mondadori");
+        bookRepository.save(book1);
+
+        Book book2 = new Book();
+        book2.setBookId(3L);
+        book2.setAuthor("Franz Kafka");
+        book2.setTitle("La metamorfosi");
+        book2.setGenre("Racconto");
+        book2.setYear(1995);
+        book2.setPublishingHouse("Mondadori");
+        bookRepository.save(book2);
+
+
         bookRepository.deleteAll();
+        assertEquals(0,bookRepository.findAll().size()  );
     }
 
     //delete one
@@ -66,8 +86,27 @@ public class BookRepositoryUnitTest {
         book.setYear(1995);
         book.setPublishingHouse("Mondadori");
         bookRepository.save(book);
-        assertEquals(1,bookRepository.findAll().size()  );
+
+        Book book1 = new Book();
+        book1.setBookId(2L);
+        book1.setAuthor("Franz Kafka");
+        book1.setTitle("La metamorfosi");
+        book1.setGenre("Racconto");
+        book1.setYear(1995);
+        book1.setPublishingHouse("Mondadori");
+        bookRepository.save(book1);
+
+        Book book2 = new Book();
+        book2.setBookId(3L);
+        book2.setAuthor("Franz Kafka");
+        book2.setTitle("La metamorfosi");
+        book2.setGenre("Racconto");
+        book2.setYear(1995);
+        book2.setPublishingHouse("Mondadori");
+        bookRepository.save(book2);
+
         bookRepository.deleteById(1L);
+        assertEquals(2,bookRepository.findAll().size()  );
     }
 
 

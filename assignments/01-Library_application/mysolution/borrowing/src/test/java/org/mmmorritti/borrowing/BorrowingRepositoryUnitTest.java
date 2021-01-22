@@ -12,7 +12,11 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.stream.StreamSupport;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
 
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -20,58 +24,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class BorrowingRepositoryUnitTest {
 
+    @MockBean
+    NotificationClient notificationClient;
+
     @Autowired
     private BorrowingRepository borrowingRepository;
 
-    @MockBean
-    private NotificationClient notificationClient;
-
     @Test
-    public void testEmptyDB(){
-        assertEquals(0,borrowingRepository.findAll());
-    }
-
-    @Test
-    public void testAddOneBorrowing(){
-        Borrowing b = new Borrowing();
-        b.setBorrowingId(1L);
-        b.setStartBorrow("202020");
-        b.setEndBorrow("212121");
-        b.setNotify("notify");
-        b.setBookId(2L);
-        b.setCustomerId(1L);
-        borrowingRepository.save(b);
-        assertEquals(1,borrowingRepository.findAll());
+    public void testEmptyDb(){
+        assertEquals(0, StreamSupport.stream(borrowingRepository.findAll().spliterator(), false).count());
     }
 
 
-    @Test
-    public void testDeleteAllBorrowing(){
-        Borrowing b = new Borrowing();
-        b.setBorrowingId(1L);
-        b.setStartBorrow("202020");
-        b.setEndBorrow("212121");
-        b.setNotify("notify");
-        b.setBookId(2L);
-        b.setCustomerId(1L);
-        borrowingRepository.save(b);
-        assertEquals(1,borrowingRepository.findAll());
-        borrowingRepository.deleteAll();
-    }
 
-    //delete one
-    @Test
-    public void testDeleteOneBorrowing(){
-        Borrowing b = new Borrowing();
-        b.setBorrowingId(1L);
-        b.setStartBorrow("202020");
-        b.setEndBorrow("212121");
-        b.setNotify("notify");
-        b.setBookId(2L);
-        b.setCustomerId(1L);
-        borrowingRepository.save(b);
-        assertEquals(1,borrowingRepository.findAll());
-        borrowingRepository.deleteById(1L);
-    }
 
 }
