@@ -20,7 +20,7 @@ jobs:
     - uses: actions/checkout@v2 #simil git-clone
     - name: Add hosts to /etc/hosts #fa corrispondere a localhost i miei servizi
       run: |
-        docker build -t michelemorritti/borrowing:1.0-SNAPSHOT --build-arg MVN_ARGS=-DskipTests . | sudo tee -a /etc/hosts
+        sudo echo "127.0.0.1 customer-mongodb book-mongodb borrowing-postgres kafka" | sudo tee -a /etc/hosts
     - name: Get branch # set branch
       id: get_branch
       run: echo ::set-output name=BRANCH::$(echo $GITHUB_REF | cut -d / -f 3)
@@ -48,7 +48,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Add hosts to /etc/hosts
       run: |
-        docker build -t michelemorritti/borrowing:1.0-SNAPSHOT --build-arg MVN_ARGS=-DskipTests . | sudo tee -a /etc/hosts
+        sudo echo "127.0.0.1 customer-mongodb book-mongodb borrowing-postgres kafka" | sudo tee -a /etc/hosts
     - name: Get branch
       id: get_branch
       run: echo ::set-output name=BRANCH::$(echo $GITHUB_REF | cut -d / -f 3)
