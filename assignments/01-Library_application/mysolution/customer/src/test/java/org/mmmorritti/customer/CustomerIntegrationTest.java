@@ -58,6 +58,18 @@ public class CustomerIntegrationTest {
             c.setNumber(23);
             c.setCity("Turin");
             c.setTelephoneNumber(1234567L);
+            customerRepository.save(c);
+
+            Customer c2 = new Customer();
+            c2.setCustomerId(2L);
+            c2.setName("Name");
+            c2.setSurname("Surname");
+            c2.setStreet("Street");
+            c2.setNumber(23);
+            c2.setCity("Turin");
+            c2.setTelephoneNumber(1234567L);
+            customerRepository.save(c2);
+
             customerRepository.findById(1L);
         }
         catch (Exception e){

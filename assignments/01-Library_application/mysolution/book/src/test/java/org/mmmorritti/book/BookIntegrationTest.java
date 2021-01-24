@@ -58,6 +58,17 @@ public class BookIntegrationTest {
             book.setGenre("Racconto");
             book.setYear(1995);
             book.setPublishingHouse("Mondadori");
+            bookRepo.save(book);
+
+            Book book1 = new Book();
+            book1.setBookId(1L);
+            book1.setAuthor("Franz Kafka");
+            book1.setTitle("La metamorfosi");
+            book1.setGenre("Racconto");
+            book1.setYear(1995);
+            book1.setPublishingHouse("Mondadori");
+            bookRepo.save(book1);
+
             bookRepo.findById(1L);
         }
         catch(Exception e){
@@ -75,6 +86,7 @@ public class BookIntegrationTest {
             book.setGenre("Racconto");
             book.setYear(1995);
             book.setPublishingHouse("Mondadori");
+            bookRepo.save(book);
 
             Book book1 = new Book();
             book1.setBookId(1L);
@@ -83,6 +95,7 @@ public class BookIntegrationTest {
             book1.setGenre("Racconto");
             book1.setYear(1995);
             book1.setPublishingHouse("Mondadori");
+            bookRepo.save(book1);
 
             bookRepo.deleteById(1L);
         }catch (Exception e){

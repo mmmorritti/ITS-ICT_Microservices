@@ -51,6 +51,27 @@ public class CustomerRepositoryUnitTest {
         c.setCity("Turin");
         c.setTelephoneNumber(1234567L);
         customerRepository.save(c);
+
+        Customer c2 = new Customer();
+        c2.setCustomerId(2L);
+        c2.setName("Name");
+        c2.setSurname("Surname");
+        c2.setStreet("Street");
+        c2.setNumber(23);
+        c2.setCity("Turin");
+        c2.setTelephoneNumber(1234567L);
+        customerRepository.save(c2);
+
+        Customer c3 = new Customer();
+        c3.setCustomerId(3L);
+        c3.setName("Name");
+        c3.setSurname("Surname");
+        c3.setStreet("Street");
+        c3.setNumber(23);
+        c3.setCity("Turin");
+        c3.setTelephoneNumber(1234567L);
+        customerRepository.save(c3);
+
         customerRepository.deleteAll();
         assertEquals(0,customerRepository.findAll().size()  );
     }
@@ -68,17 +89,28 @@ public class CustomerRepositoryUnitTest {
         c.setTelephoneNumber(1234567L);
         customerRepository.save(c);
 
-        c.setCustomerId(2L);
-        c.setName("Name");
-        c.setSurname("Surname");
-        c.setStreet("Street");
-        c.setNumber(23);
-        c.setCity("Turin");
-        c.setTelephoneNumber(1234567L);
-        customerRepository.save(c);
+        Customer c2 = new Customer();
+        c2.setCustomerId(2L);
+        c2.setName("Name");
+        c2.setSurname("Surname");
+        c2.setStreet("Street");
+        c2.setNumber(23);
+        c2.setCity("Turin");
+        c2.setTelephoneNumber(1234567L);
+        customerRepository.save(c2);
+
+        Customer c3 = new Customer();
+        c3.setCustomerId(3L);
+        c3.setName("Name");
+        c3.setSurname("Surname");
+        c3.setStreet("Street");
+        c3.setNumber(23);
+        c3.setCity("Turin");
+        c3.setTelephoneNumber(1234567L);
+        customerRepository.save(c3);
 
         customerRepository.deleteById(1L);
-        assertEquals(1,customerRepository.findAll().size()  );
+        assertEquals(2,customerRepository.findAll().size()  );
         System.out.println(c);
     }
 }

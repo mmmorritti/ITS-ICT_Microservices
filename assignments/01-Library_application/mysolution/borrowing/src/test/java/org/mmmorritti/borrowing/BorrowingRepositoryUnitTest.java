@@ -35,6 +35,19 @@ public class BorrowingRepositoryUnitTest {
         assertEquals(0, StreamSupport.stream(borrowingRepository.findAll().spliterator(), false).count());
     }
 
+    @Test
+    public void testAddOneBorrow(){
+        Borrowing b = new Borrowing();
+        b.setBorrowingId(234l);
+        b.setStartBorrow("startDate");
+        b.setEndBorrow("endDate");
+        b.setCustomerId(45l);
+        b.setBookId(2l);
+        b.setNotify("notify");
+        borrowingRepository.save(b);
+        assertEquals(1,StreamSupport.stream(borrowingRepository.findAll().spliterator(),false).count());
+    }
+
 
 
 
