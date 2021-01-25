@@ -28,7 +28,7 @@ public class BookController {
     //get all
     @RequestMapping(method = RequestMethod.GET)
     public Collection<Book> getAllBooks() {
-        log.info("Get all book");
+        log.info("Get BOOK");
         return bookRepository.findAll();
     }
 
@@ -38,10 +38,11 @@ public class BookController {
     public Book getBook(@PathVariable long bookId){
         Optional<Book> bookOpt = bookRepository.findById(bookId);
         if(bookOpt.isPresent()){
-            log.info("Get book by id");
+            log.info("Get book BY id");
             return bookOpt.get();
+            log.info("ok");
         }else{
-            log.warn("book not found");
+            log.error("book not found");
             return null;
         }
     }
@@ -56,7 +57,7 @@ public class BookController {
     //delete by ID
     @RequestMapping(value = "/{bookId}", method = RequestMethod.DELETE)
     public void deleteBook(@PathVariable long bookId){
-
+        log.info("deliting " + bookId);
         bookRepository.deleteById(bookId);
         log.info("Book deleted");
     }
@@ -64,7 +65,7 @@ public class BookController {
     //delete all book
     @RequestMapping(method = RequestMethod.DELETE)
     public void deleteAllBook() {
-
+        log.info("delinting");
         bookRepository.deleteAll();
         log.info("deleted all book");
     }

@@ -58,6 +58,7 @@ public class BookControllerUnitTest {
             book.setGenre("Racconto");
             book.setYear(1995);
             book.setPublishingHouse("Mondadori");
+            bookRepository.save(book);
             bookRepository.findById(1L);
         }
         catch(Exception e){

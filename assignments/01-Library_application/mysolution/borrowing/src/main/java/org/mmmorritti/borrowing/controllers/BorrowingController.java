@@ -35,7 +35,7 @@ public class BorrowingController {
     public Borrowing setBorrowing(@RequestBody Borrowing borrowing){
         notificationClient.sendSMS(borrowing);
         System.out.println(borrowing);
-        log.info("set");
+        log.info("set borrowing");
         return borrowingRepository.save(borrowing);
 
     }
@@ -45,10 +45,11 @@ public class BorrowingController {
     public Borrowing getBorrowing(@PathVariable long borrowingId){
         Optional<Borrowing> borrowingOpt = borrowingRepository.findById(borrowingId);
         if(borrowingOpt.isPresent()){
-            log.info("Get");
+            log.info("Get borrowing " + borrowingId);
             return borrowingOpt.get();
+            log.info("get ok");
         }else{
-            log.warn("Not found");
+            log.error("Not found");
             return null;
         }
     }
@@ -73,15 +74,17 @@ public class BorrowingController {
     //delete by ID
     @RequestMapping(value = "/{borrowingId}", method = RequestMethod.DELETE)
     public void deleteBorrowing(@PathVariable long borrowingId){
-        log.info("Delete ");
+        log.info("Delete " + borrowingId);
         borrowingRepository.deleteById(borrowingId);
+        log.info("deleted " + borrowingId);
     }
 
-    //delete all book
+    //delete all borrowing
     @RequestMapping(method = RequestMethod.DELETE)
     public void deleteAllBorrowing() {
-        log.info("Delete all");
+        log.info("Deleting");
         borrowingRepository.deleteAll();
+        log.info("deleted ");
     }
 
 }
