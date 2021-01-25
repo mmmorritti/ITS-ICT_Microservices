@@ -53,11 +53,11 @@ public class BookControllerUnitTest {
         try{
             Book book = new Book();
             book.setBookId(1L);
-            book.setAuthor("Franz Kafka");
-            book.setTitle("La metamorfosi");
-            book.setGenre("Racconto");
+            book.setAuthor("author");
+            book.setTitle("title");
+            book.setGenre("genre");
             book.setYear(1995);
-            book.setPublishingHouse("Mondadori");
+            book.setPublishingHouse("publishingHouse");
             bookRepository.save(book);
             bookRepository.findById(1L);
         }

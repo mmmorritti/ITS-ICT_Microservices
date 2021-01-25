@@ -80,29 +80,29 @@ public class BookRepositoryUnitTest {
     public void testDeleteOneBook(){
         Book book = new Book();
         book.setBookId(1L);
-        book.setAuthor("Franz Kafka");
-        book.setTitle("La metamorfosi");
-        book.setGenre("Racconto");
+        book.setAuthor("author");
+        book.setTitle("title");
+        book.setGenre("genre");
         book.setYear(1995);
-        book.setPublishingHouse("Mondadori");
+        book.setPublishingHouse("publishing");
         bookRepository.save(book);
 
         Book book1 = new Book();
         book1.setBookId(2L);
-        book1.setAuthor("Franz Kafka");
-        book1.setTitle("La metamorfosi");
-        book1.setGenre("Racconto");
+        book1.setAuthor("author");
+        book1.setTitle("title");
+        book1.setGenre("genre");
         book1.setYear(1995);
-        book1.setPublishingHouse("Mondadori");
+        book1.setPublishingHouse("publishing");
         bookRepository.save(book1);
 
         Book book2 = new Book();
         book2.setBookId(3L);
-        book2.setAuthor("Franz Kafka");
-        book2.setTitle("La metamorfosi");
-        book2.setGenre("Racconto");
+        book2.setAuthor("author");
+        book2.setTitle("title");
+        book2.setGenre("genre");
         book2.setYear(1995);
-        book2.setPublishingHouse("Mondadori");
+        book2.setPublishingHouse("publishing");
         bookRepository.save(book2);
 
         bookRepository.deleteById(1L);
